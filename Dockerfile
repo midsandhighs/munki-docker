@@ -24,7 +24,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # Create dirs for Munki
-RUN mkdir -p /webroot && \
+RUN mkdir -p /munki_repo && \
 	mkdir -p /etc/nginx/sites-enabled/ && \
 	rm /etc/nginx/sites-enabled/default
 
@@ -41,7 +41,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 	ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Expose volumes
-VOLUME ["/webroot"]
+VOLUME ["/munki_repo"]
 
 # Expose ports
 EXPOSE 80 443
